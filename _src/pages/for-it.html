@@ -1,0 +1,87 @@
+<!--
+path: /for-it/
+title: For a diocesan IT department
+description: The technical facts about LexTribunalis: what it runs on, where the data and the keys are kept, sign-in, outside connections, backups, updates, and what has not been done yet.
+nav: for-it
+-->
+<section class="section head">
+  <div class="wrap">
+    <h1>For a diocesan IT department</h1>
+    <p class="lead">The facts a diocese's IT staff will ask for, as they stand today. Where something has not been done, this page says so.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <dl class="facts">
+      <dt>What it is</dt>
+      <dd><p>A web application. Staff use it in a browser, and nothing is installed on their computers.</p></dd>
+
+      <dt>What it runs on</dt>
+      <dd><p>One Linux server, with Node.js 22. The database is SQLite: a single file on that server. The original documents of the acts are kept in a folder beside it, which may be a network share.</p></dd>
+
+      <dt>Where the data is</dt>
+      <dd><p>On that server, in the documents folder if that is kept on a network share, and in whatever backups the diocese takes. Installed on a server the diocese owns, the records do not leave the diocese.</p></dd>
+
+      <dt>Encryption of documents</dt>
+      <dd><p>Each original document is encrypted with AES-256-GCM under a key of its own, and that key is encrypted under the installation's key. The installation's key is a file on the server, held by the diocese. Someone who obtains the folder of documents, or a backup of it, without that key can read nothing.</p></dd>
+
+      <dt>Encryption of the database</dt>
+      <dd><p>The application does not encrypt the database file. It holds everything that is not an original document, including names, grounds, the passages quoted in a chronology, and the vota. It should sit on an encrypted disk with access to the server restricted.</p></dd>
+
+      <dt>In transit</dt>
+      <dd><p>It is served over HTTPS, behind the web server or proxy the diocese uses for its other applications.</p></dd>
+
+      <dt>Signing in</dt>
+      <dd><p>A password, stored as a salted scrypt hash, and a six-digit code from an authenticator app. Repeated wrong attempts lock the account for fifteen minutes. A session ends after twelve hours, or after two hours without use. Signing in with Microsoft 365 accounts is not built yet.</p></dd>
+
+      <dt>Reached from the internet</dt>
+      <dd><p>If judges and others are to use it from outside the office, the server is reachable from the internet, or through the diocese's VPN if it prefers.</p>
+      <p>A party or a witness can be given a link and a short code in place of an account. The two are sent by different routes and are kept only as hashes. Five wrong codes make the link wait fifteen minutes. A link expires on a day the tribunal sets, ninety days by default, and can be withdrawn at once. It opens a separate, limited view and never the acts.</p></dd>
+
+      <dt>Who can see what</dt>
+      <dd><p>Each account has a role. An account for a judge, defender of the bond or advocate engaged for particular causes opens those causes only. A document that a decree has withheld is given out only through the application, which checks who is asking.</p></dd>
+
+      <dt>The record of changes</dt>
+      <dd><p>Every change is written to the record in the same database transaction as the change itself, with the account, the time and the IP address (the visitor's own, when the application sits behind a proxy). The application offers no way to edit or delete an entry.</p>
+      <p>The record is a hash chain. Each entry is numbered and carries a SHA-256 hash of its own contents and of the hash before it, and a command checks the whole record from its first entry. An entry changed, removed or inserted afterwards is detected.</p>
+      <p>Someone with administrative access to the server could still alter an entry and seal the chain again from there. What guards against that is a copy of the latest seal kept somewhere else. The record's page shows it, to be printed and signed by the notary, or given to a timestamping service of the diocese's choosing. The application itself sends it nowhere.</p></dd>
+
+      <dt>Outside connections</dt>
+      <dd><p>None, unless one is turned on. The application sends no usage data to anyone, and its fonts and scripts are its own, so it works with no connection to the internet.</p>
+      <p>Two connections are optional. Time limits can be written into Outlook calendars through Microsoft 365, by an application the diocese registers in its own tenant with access limited to the tribunal's mailboxes. And the planned assistant would send the text of a deposition to a model at an address set on the server by its administrator. The application shows that address, and whether it is on the local network, to everyone who uses the assistant. It does not itself prevent the address being set to a machine elsewhere.</p></dd>
+
+      <dt>Vendor access</dt>
+      <dd><p>On a server the diocese administers: none, unless the diocese gives it for installation or support, and for as long as it chooses.</p></dd>
+
+      <dt>If a server is arranged for the diocese</dt>
+      <dd><p>The provider, the country the server is in, and who has administrative access to it are agreed with the diocese beforehand. Whoever administers a server can reach what is on it, so in that case the entry above holds only as far as that agreement provides.</p></dd>
+
+      <dt>Backups</dt>
+      <dd><p>Three things are backed up: the database file, the folder of documents, and the installation's key, which is kept apart from the other two. The diocese's own backup system can take them. The database should be copied with SQLite's backup command, or with the application stopped, and not simply copied while in use. A command checks that a restored folder is complete and that every document in it still decrypts.</p></dd>
+
+      <dt>Updates</dt>
+      <dd><p>An update is a new version of the application, installed on the server by whoever administers it. Changes to the database are applied by a command that comes with the update. An update may not fit a copy the diocese has altered.</p></dd>
+
+      <dt>If development stopped</dt>
+      <dd><p>The records would remain readable without the maker. SQLite is an open, widely used format. The letters and decrees are ordinary Word files. The originals can be decrypted with the diocese's own key.</p>
+      <p>The diocese also holds the source code, which is installed on its server, and a licence to go on using and changing it for itself. <a href="/yours-to-change/">Yours to change</a> describes this.</p></dd>
+
+      <dt>Who is behind it</dt>
+      <dd><p>Richard Verver, a sole proprietor in Ontario. He is the only developer and gives the support himself. There is no company and no second person.</p></dd>
+
+      <dt>Not yet done or settled</dt>
+      <dd><p>No independent security review has been carried out. There is no published commitment on how quickly security fixes are issued. A single export of all records is planned and not yet built. There is no sign-in with Microsoft 365. The application is in English only.</p></dd>
+    </dl>
+  </div>
+</section>
+
+<section class="section invite">
+  <div class="wrap">
+    <h2>Questions this page does not answer</h2>
+    <div class="prose">
+      <p>Write to <a href="mailto:{{email}}">{{email}}</a>. A diocese's IT staff are welcome at a demonstration.</p>
+      <p class="actions"><a class="button" href="/contact/">Ask for a demonstration</a></p>
+    </div>
+  </div>
+</section>

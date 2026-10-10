@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yours to change | LexTribunalis</title>
+<meta name="description" content="A tribunal receives the source code of LexTribunalis and may change it, by hand or with a coding agent. A versioned graph of the procedural law keeps those changes from silently altering the procedure.">
+<link rel="canonical" href="https://lextribunalis.com/yours-to-change/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="LexTribunalis">
+<meta property="og:locale" content="en_CA">
+<meta property="og:title" content="Yours to change | LexTribunalis">
+<meta property="og:description" content="A tribunal receives the source code of LexTribunalis and may change it, by hand or with a coding agent. A versioned graph of the procedural law keeps those changes from silently altering the procedure.">
+<meta property="og:url" content="https://lextribunalis.com/yours-to-change/">
+<meta property="og:image" content="https://lextribunalis.com/assets/img/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/eb-garamond-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css">
+<meta name="theme-color" content="#5c1a24">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="/">LexTribunalis</a>
+    <nav class="nav" aria-label="Main"><a href="/what-it-does/">What it does</a><a href="/yours-to-change/" aria-current="page">Yours to change</a><a href="/planned/">Planned</a><a href="/for-it/">For IT</a><a href="/about/">About</a><a href="/contact/">Contact</a></nav>
+  </div>
+</header>
+<main id="main">
+<section class="section head">
+  <div class="wrap">
+    <h1>Yours to change</h1>
+    <p class="lead">A tribunal that installs LexTribunalis receives its source code and may change it to suit itself. This page says how that is meant to work, and what part of it is not built yet.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap two">
+    <div>
+      <h2>You are not locked in</h2>
+      <p>The source code is on your own server. Your IT staff can read it and change it. So can a coding agent, such as Claude Code or Codex: point one at the folder and ask for a field, a report or a screen to be added, removed or changed.</p>
+      <p>That is deliberate. A tribunal should not have to buy its tools from someone who alone can alter them, and it has never been easier to alter software than it is now.</p>
+      <p>The licence allows a tribunal to change its own copy as it likes. It does not allow passing the system on to others.</p>
+    </div>
+    <div>
+      <h2>What an agent needs</h2>
+      <p>A coding agent works quickly and is sometimes wrong, and it does not always say when. That matters little for the colour of a button. It matters a great deal if a change quietly alters when a time limit expires or which act must come before another.</p>
+      <p>An agent does its best work when there is something fixed that every change can be checked against, by a rule and not by another guess. For a tribunal, that fixed thing is the procedural law.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section band">
+  <div class="wrap">
+    <h2>The graph of the procedure</h2>
+    <div class="two">
+      <div>
+        <p>LexTribunalis is being built to keep the procedural law as a graph. The word is from mathematics, and the idea is simple: a list of the acts of a process, and the rules that hold between them. This act cannot come before that one. This act opens that time limit, and that act closes it.</p>
+        <p>Each act and each rule cites its source in the Code of Canon Law, <i>Dignitas connubii</i> or <i>Mitis Iudex</i>.</p>
+        <p>Because it is a fixed set of rules, a computer can check a cause against it, or a change to the program against it, and give the same answer every time.</p>
+      </div>
+      <div>
+        <p>The graph is not written by an AI. It is Richard Verver's reading of the procedural law, set down rule by rule so that another canonist can check it and disagree with it. It is given a version number, and it is brought up to date when the law changes.</p>
+        <p>Its work is to constrain. Whatever a person or an agent changes in the program, the tests that come with the system will fail if the change would alter the procedure, so that nothing about the procedure changes without someone having decided it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap two">
+    <div>
+      <h2>Where your practice differs</h2>
+      <p>Not every tribunal follows every step as the law sets it out. Many have settled ways of working that serve their people well with the staff they have.</p>
+      <p>A tribunal will be able to edit its own copy of the graph to match its practice. The system then notes, at the points where it matters, that the tribunal's practice differs there from the Code, <i>Dignitas connubii</i> or <i>Mitis Iudex</i>. The note is there to inform and for no other reason.</p>
+      <p>A tribunal that does not want the notes can have them taken out, like anything else.</p>
+    </div>
+    <div>
+      <h2>What is at your own risk</h2>
+      <p>A copy that a tribunal has changed is the tribunal's own. Richard cannot answer for changes he has not seen, and an update from him may not fit a copy that has been altered.</p>
+      <p>Two parts deserve particular care: the rules on who may see what, and the record of changes. A careless alteration there is a breach of confidence and not a mere fault.</p>
+      <p>A tribunal that would rather not make a change itself can ask Richard to make it, for a fee agreed beforehand.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section band">
+  <div class="wrap">
+    <h2>Where this stands today</h2>
+    <ul class="plain-list prose">
+      <li>The source code is delivered with every installation, with the tests that check the counting of time limits and the rules of access.</li>
+      <li>The steps of each process and the time limits attached to them are kept as plain lists, each with its canon beside it.</li>
+      <li>The rules between the steps, which make those lists a graph, and the checking of a cause and of the program against them, are being built now. They are not yet in the system.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section invite">
+  <div class="wrap">
+    <h2>Ask for a demonstration</h2>
+    <div class="prose">
+      <p>Write to <a href="mailto:richard@lextribunalis.com">richard@lextribunalis.com</a>, or use <a href="/contact/">the form</a>. A diocese's IT staff are welcome.</p>
+      <p class="actions"><a class="button" href="/contact/">Ask for a demonstration</a></p>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div>
+      <p class="brand">LexTribunalis</p>
+      <p>Case management for diocesan marriage tribunals.</p>
+    </div>
+    <div>
+      <p><a href="mailto:richard@lextribunalis.com">richard@lextribunalis.com</a></p>
+      <p>Toronto, Ontario</p>
+    </div>
+    <div class="small">
+      <p>Every name, cause and document shown on this site is invented.</p>
+      <p>This site sets no cookies and does no tracking.</p>
+      <p>&copy; 2026 Richard Verver</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

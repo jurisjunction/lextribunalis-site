@@ -1,0 +1,32 @@
+<!--
+path: /contact/
+title: Contact
+description: Ask for a demonstration of LexTribunalis, or ask a question. Write to richard@lextribunalis.com.
+nav: contact
+-->
+<section class="section">
+  <div class="wrap">
+    <h1>Ask for a demonstration</h1>
+    <div class="two">
+      <div>
+        <p class="lead">Write to <a href="mailto:{{email}}?subject=LexTribunalis%20demonstration">{{email}}</a>.</p>
+        <p>LexTribunalis is in early access, and a few more tribunals are welcome to join. Say which tribunal you are with and what you would like to see. A demonstration is given by video call. It costs nothing and commits a tribunal to nothing. A question on its own is welcome too.</p>
+        <p>Messages are read and answered by Richard Verver.</p>
+        <p class="note">Please do not put the details of any real cause in a message.</p>
+      </div>
+      <form class="enquiry" action="{{form_endpoint}}" method="POST">
+        <input type="hidden" name="_subject" value="LexTribunalis enquiry">
+        <input type="hidden" name="_next" value="{{domain}}/thanks/">
+        <input type="hidden" name="_template" value="table">
+        <input class="hidden" type="text" name="_honey" tabindex="-1" autocomplete="off">
+        <label>Your name <input type="text" name="name" autocomplete="name" required></label>
+        <label><span>Tribunal or diocese <i>(optional)</i></span> <input type="text" name="tribunal" autocomplete="organization"></label>
+        <label><span>Your office <i>(optional)</i></span> <input type="text" name="office" autocomplete="organization-title" placeholder="Judicial vicar, director, notary, IT"></label>
+        <label>Email address <input type="email" name="email" autocomplete="email" required></label>
+        <label>What would you like to see or ask? <textarea name="message" required></textarea></label>
+        <div><button class="button" type="submit">Send</button></div>
+        <p class="note">This form is delivered by FormSubmit, an outside mail service, which shows a short check that you are a person. If you would rather not use it, write to the address directly.</p>
+      </form>
+    </div>
+  </div>
+</section>
