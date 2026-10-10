@@ -18,7 +18,8 @@ nav: for-it
       <dd><p>A web application. Staff use it in a browser, and nothing is installed on their computers.</p></dd>
 
       <dt>What it runs on</dt>
-      <dd><p>One Linux server, with Node.js 22. The database is SQLite: a single file on that server. The original documents of the acts are kept in a folder beside it, which may be a network share.</p></dd>
+      <dd><p>A small Linux server or virtual machine, with Node.js 22. It can sit on the virtualisation a diocese already runs, such as Hyper-V or VMware, or in the diocese's own Azure tenant. It has not been tested on Windows itself.</p>
+      <p>The database is SQLite: a single file on that server. The original documents of the acts are kept in a folder beside it, which may be a network share.</p></dd>
 
       <dt>Where the data is</dt>
       <dd><p>On that server, in the documents folder if that is kept on a network share, and in whatever backups the diocese takes. Installed on a server the diocese owns, the records do not leave the diocese.</p></dd>
@@ -33,7 +34,7 @@ nav: for-it
       <dd><p>It is served over HTTPS, behind the web server or proxy the diocese uses for its other applications.</p></dd>
 
       <dt>Signing in</dt>
-      <dd><p>A password, stored as a salted scrypt hash, and a six-digit code from an authenticator app. Repeated wrong attempts lock the account for fifteen minutes. A session ends after twelve hours, or after two hours without use. Signing in with Microsoft 365 accounts is not built yet.</p></dd>
+      <dd><p>A password, stored as a salted scrypt hash, and a six-digit code from an authenticator app. Repeated wrong attempts lock the account for fifteen minutes. A session ends after twelve hours, or after two hours without use. Signing in with Microsoft 365 accounts (Entra ID) is not built yet. A diocese that uses Entra Application Proxy can publish the application to people outside the office through its own Microsoft sign-in, with no change to the application.</p></dd>
 
       <dt>Reached from the internet</dt>
       <dd><p>If judges and others are to use it from outside the office, the server is reachable from the internet, or through the diocese's VPN if it prefers.</p>
