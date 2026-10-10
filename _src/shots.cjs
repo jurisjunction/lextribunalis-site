@@ -64,7 +64,17 @@ const [base, out] = process.argv.slice(2);
   await shoot("today");
   await page.goto("/templates");
   await shoot("templates");
+  // The questions of the annual report are those of forms the Holy See sends
+  // to a Judicial Vicar, and are not this site's to publish: their wording is
+  // blurred, and the numbers, the layout and what can be opened are left.
   await page.goto("/statistics");
+  await page.waitForLoadState("networkidle");
+  await page.evaluate(() => {
+    for (const el of document.querySelectorAll("main section *")) {
+      const own = [...el.childNodes].filter((node) => node.nodeType === Node.TEXT_NODE).map((node) => node.nodeValue.trim()).join(" ");
+      if (/[A-Za-z]{3}/.test(own) && !/^(Which|by hand)$/.test(own)) el.style.filter = "blur(5px)";
+    }
+  });
   await shoot("report");
 
   await page.goto("/cases");
