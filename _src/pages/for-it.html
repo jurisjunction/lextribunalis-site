@@ -29,7 +29,7 @@ nav: for-it
       <dd><p>Each original document is encrypted with AES-256-GCM under a key of its own, and that key is encrypted under the installation's key. The installation's key is a file on the server, held by the diocese. Someone who obtains the folder of documents, or a backup of it, without that key can read nothing.</p></dd>
 
       <dt>Encryption of the database</dt>
-      <dd><p>The application does not encrypt the database file. It holds everything that is not an original document, including names, grounds, the passages quoted in a chronology, and the vota. It should sit on an encrypted disk with access to the server restricted.</p></dd>
+      <dd><p>The application does not encrypt the database file. It holds everything that is not an original document, including names, grounds and the passages quoted in a chronology. A judge's votum is not in it: a votum is kept only as its document, encrypted. The database should sit on an encrypted disk with access to the server restricted.</p></dd>
 
       <dt>In transit</dt>
       <dd><p>It is served over HTTPS, behind the web server or proxy the diocese uses for its other applications.</p></dd>
